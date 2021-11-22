@@ -14,8 +14,8 @@
     limitations under the License.
 ]
 
-    ; First we write the boilerplate code including the stdio and stdlib headers 
-    ; and initializing the memory with calloc
+First we write the boilerplate code including the stdio and stdlib headers 
+and initializing the memory with calloc
 ++++++++++.-[->++++<]>-.[->+++<]>.+++++.-----------.+++++++++.+++++++++.+[->+++<]>++.+.--[--->+<]>-.--[->
 ++<]>.--[->++<]>-.+.++[->+++<]>++.+++++.++++++.[->+++++<]>+++.+[--->+<]>+++.++[->+++<]>.>++++++++++.-[->+
 +++<]>-.[->+++<]>.+++++.-----------.+++++++++.+++++++++.+[->+++<]>++.+.--[--->+<]>-.--[->++<]>.--[->++<]>
@@ -46,28 +46,28 @@
 ++++++.-.----.+++++.-.[---->+<]>+++.-[->++<]>-.+[-->+<]>+.---[->++++<]>-.+.++[->+++<]>++.+++++++++++.++++
 ++.-.[-->+<]>+.>++++++++++.[->+++<]>++....-[->++++<]>+.
 
-// Note here X is used to denote some special 
-// character in brainfuck's syntax while G is used
-// for some garbage value that is unknown
-// A questionmark is used to denote values that
-// have meaning when they are null
+Note here X is used to denote some special character in 
+brainfuck's syntax. A questionmark is used to denote values 
+that have a boolean semantics. 
 
-// We begin to parse in a loop
-// until a EOF character is fed (minus 1)
+We begin to parse in a loop until a EOF character is fed (minus 1)
 ,+
-[
-                                              *
-    // copy input char 9 times 0|c|c|c|c|c|c|0|0|0|0|0|0
-    -[>+>+>+>+>+>+>+>+>+>+<<<<<<<<<<-]
-                                              *
-    // move to the outermost copy 0|c|c|c|c|c|c|0|0|0|0|0|0  
+[   
+    decremet previously incremented character
+    -
+
+    copy input char 9 times 0|c|c|c|c|c|c|c|c|c|0
+    we have to copy 9 times to perfom 9 comparisons
+    [>+>+>+>+>+>+>+>+>+>+<<<<<<<<<<-]
+                                           
+     move to the outermost copy
     >>>>>>>>>>           
     
-                                       *
-    // write a plus sign:  0|c|c|c|c|c|c|X|0|0|0|0|0 
+                                    
+    write a plus sign and return to the outermost copy
     >>++[------<+>][-]<<
-                                          *
-    // compare characters:  0|c|c|c|c|c|0|?|0|0|0|0|0  
+                                       *
+    compare characters:  0|c|c|c|c|c|0|?|0|0|0|0|0  
     >[-<->]<[>-<[-]]>+
     
                                                          *
